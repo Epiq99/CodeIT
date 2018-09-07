@@ -111,7 +111,7 @@ class Entity:
         for name, behaviour in self.behaviours.items():
             behaviour.update(delta_time, keys, config, game_methods)
         self.update_position(delta_time, keys, config, game_methods)
-        if self.y > game_methods.get_level_dimensions()[1]:
+        if self.y > (game_methods.get_level_dimensions()[1]+10) or self.y < -10:
             self.die()
         if self.deletion_pending:
             self.clear()
