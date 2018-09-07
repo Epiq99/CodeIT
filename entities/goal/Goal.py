@@ -13,11 +13,14 @@ class Goal(Trigger):
 
     def on_collide(self, colliding_objects, delta_time, keys, config, game_methods: GameMethods):
         for collider in colliding_objects:
-            if collider.name == "Player":
-                if self.go_to_next_level is None:
-                    pass
-                else:
-                    self.go_to_next_level()
+            enemies = game_methods.find_entities("Enemy")
+            if enemies == None or len([x for x in enemies if not x.is_dead]) == 0:
+                if collider.name == "Player":
+                    if self.go_to_next_level is None:
+                        pass
+                    else:
+                        self.go_to_next_level()
+
 
 
 

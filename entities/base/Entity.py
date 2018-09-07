@@ -110,10 +110,9 @@ class Entity:
         self._game_methods = game_methods
         for name, behaviour in self.behaviours.items():
             behaviour.update(delta_time, keys, config, game_methods)
-            if self.is_dead:
-                return
-
         self.update_position(delta_time, keys, config, game_methods)
+        if self.y > game_methods.get_level_dimensions()[1]:
+            self.die()
         if self.deletion_pending:
             self.clear()
 

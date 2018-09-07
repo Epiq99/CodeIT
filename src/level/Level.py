@@ -199,7 +199,7 @@ class Level:
     def get_entities(self, entity_name):
         if entity_name in self.entity_lookup_map:
             return self.entity_lookup_map[entity_name]
-        raise Exception("Invalid entity!, " + entity_name)
+        return None
 
     def get_y(self, number, unit):
         if unit == "percent":
